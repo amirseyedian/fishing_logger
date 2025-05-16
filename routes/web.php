@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TripController;
+use App\Http\Controllers\CatchController;
+use App\Http\Controllers\TripImageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +21,18 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function () {
+    // Explicit route for trip creation form
+    Route::get('/trip/create', [TripController::class, 'create'])->name('trip.create');
+    Route::post('/trip', [TripController::class, 'store'])->name('trip.store');
+
+    // Trip resource routes
+    Route::resource('trips', TripController::class);
+    Route::post('trips/{trip}/catches', [CatchesController::class, 'store'])->name('catches.store');
+    Route::post('trips/{trip}/images', [TripImageController::class, 'store'])->name('images.store');
+
+    // Catch and image storage routes
+    Route::post('trips/{trip}/catches', [CatchesController::class, 'store'])->name('catches.store');
+    Route::post('trips/{trip}/images', [TripImageController::class, 'store'])->name('images.store');
+});

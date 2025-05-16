@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class TripImage extends Model
 {
-    //
+    protected $fillable = [
+        'trip_id',
+        'image_path',
+        'caption',
+    ];
 }
