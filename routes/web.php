@@ -1,38 +1,43 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TripController;
-use App\Http\Controllers\CatchController;
+use App\Http\Controllers\CatchesController;
 use App\Http\Controllers\TripImageController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Dashboard for authenticated + verified users
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
+// Profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+// Trip, Catch, and Image routes
+Route::middleware('auth')->group(function () {
+    // Custom trip routes (if you want different naming than resource default)
+    Route::get('/trips', [TripController::class, 'index'])->name('trips.index'); // Show all trips
+    Route::get('/trips/{trip}', [TripController::class, 'show'])->name('trip.show'); // singular
+    Route::get('/trips/create', [TripController::class, 'create'])->name('trips.create'); //
+    Route::post('/trips', [TripController::class, 'store'])->name('trips.store'); // Store trip
 
-Route::middleware(['auth'])->group(function () {
-    // Explicit route for trip creation form
-    Route::get('/trip/create', [TripController::class, 'create'])->name('trip.create');
-    Route::post('/trip', [TripController::class, 'store'])->name('trip.store');
+    // Catches & Images (nested under a trip)
+    Route::post('/trips/{trip}/catches', [CatchesController::class, 'store'])->name('catches.store');
+    Route::post('/trips/{trip}/images', [TripImageController::class, 'store'])->name('images.store');
 
-    // Trip resource routes
-    Route::resource('trips', TripController::class);
-    Route::post('trips/{trip}/catches', [CatchesController::class, 'store'])->name('catches.store');
-    Route::post('trips/{trip}/images', [TripImageController::class, 'store'])->name('images.store');
-
-    // Catch and image storage routes
-    Route::post('trips/{trip}/catches', [CatchesController::class, 'store'])->name('catches.store');
-    Route::post('trips/{trip}/images', [TripImageController::class, 'store'])->name('images.store');
+    // Optional RESTful routes: edit, update, destroy
+    Route::get('/trips/{trip}/edit', [TripController::class, 'edit'])->name('trips.edit');
+    Route::delete('/trips/{trip}', [TripController::class, 'destroy'])->name('trips.destroy');
 });
+
+require __DIR__ . '/auth.php';

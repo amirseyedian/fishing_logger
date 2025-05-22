@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,7 +16,17 @@ class Catches extends Model
         'quantity',
         'weight',
         'length',
+        'depth',
+        'water_temperature',
         'notes',
+    ];
+
+    protected $casts = [
+        'quantity'          => 'integer',
+        'weight'            => 'float',
+        'length'            => 'float',
+        'depth'             => 'float',
+        'water_temperature' => 'float',
     ];
 
     public function trip()

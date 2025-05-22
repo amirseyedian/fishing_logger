@@ -15,7 +15,7 @@
 <body class="bg-[#f0f4f8] dark:bg-[#0a0a0a] text-gray-800 dark:text-white min-h-screen flex flex-col">
 
     {{-- Navbar --}}
-    <x-navbar />
+    @include ('layouts.navbar')
 
     <main class="flex flex-col items-center justify-center flex-1 px-6 py-12 text-center">
         <h1 class="text-4xl font-bold mb-4">🎣 Welcome to Fishing Trip Logger</h1>

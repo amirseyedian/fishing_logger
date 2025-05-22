@@ -22,7 +22,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    public function trips()
+{
+    return $this->hasMany(Trip::class);
+}
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -20,6 +20,13 @@ return new class extends Migration
             $table->date('date');
             $table->text('notes')->nullable();
             $table->json('weather_info')->nullable();
+            $table->float('air_temperature')->nullable();      
+            $table->float('precipitation')->nullable();        
+            $table->float('wind_speed')->nullable();           
+            $table->string('wind_direction', 5)->nullable();  
+            $table->float('moon_phase')->nullable();
+            $table->string('weather_description')->nullable();
+            $table->string('weather_icon')->nullable();
             $table->timestamps();
         });
     }

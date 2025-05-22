@@ -18,11 +18,9 @@ return new class extends Migration
             $table->string('species');
             $table->decimal('weight', 5, 2)->nullable();
             $table->decimal('length', 5, 2)->nullable();
-            $table->unsignedInteger('quantity')->default(1); // ✅ Added line
+            $table->unsignedInteger('quantity')->default(1);
             $table->string('bait')->nullable();
             $table->string('depth')->nullable();
-            $table->time('time_caught')->nullable();
-            $table->boolean('is_released')->default(false);
             $table->text('notes')->nullable(); 
             $table->timestamps();
         });
