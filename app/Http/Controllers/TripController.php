@@ -20,7 +20,7 @@ class TripController extends Controller
     // Show form to create a new trip
     public function create()
     {
-        return view('trip.create1');
+        return view('trip.create');
     }
 
     // Store a newly created trip

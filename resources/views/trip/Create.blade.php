@@ -210,23 +210,26 @@
                     </div>
                     <!-- Submit -->
                     <div class="flex justify-end pt-4 border-t border-gray-200 dark:border-gray-600">
-                        <button type="submit     " clasg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6
-                            rounded-lg shadow-md">
-
+                        <button type="submit"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md">
+                            Save Trip
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
 
-        <!-- Map Script -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const map = L.map('map').setView([51.505, -0.09], 6);
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap contributors'
-                }).addTo(map);
+    <!-- Map Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const map = L.map('map').setView([51.505, -0.09], 6);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
 
-                                    k', function (e) {
+            let marker;
+            map.on('click', function (e) {
                 if (marker) {
                     map.removeLayer(marker);
                 }
@@ -234,6 +237,6 @@
                 document.getElementById('latitude').value = e.latlng.lat;
                 document.getElementById('longitude').value = e.latlng.lng;
             });
-                    });
-        </script>
-@endsection                                                                                                
+        });
+    </script>
+@endsection                    

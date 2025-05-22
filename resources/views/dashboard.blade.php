@@ -5,14 +5,14 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
         </h2>
-        <a href="{{ route('trips.create') }}" 
-           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+        <a href="{{ route('trips.create') }}"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
             + Log New Trip
         </a>
     </div>
 @endsection
 
-@section('content') 
+@section('content')
     <div class="py-12 space-y-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
@@ -41,7 +41,8 @@
                             <h4 class="font-semibold text-gray-900 dark:text-white">{{ $trip->title }}</h4>
                             <p class="text-sm text-gray-500">{{ $trip->date->format('M d, Y') }}</p>
                             <p class="mt-2 text-gray-700 dark:text-gray-300">Catches: {{ $trip->catches_count }}</p>
-                            <a href="{{ route('trip.show', $trip->id) }}" class="text-blue-600 hover:underline text-sm mt-2 block">View Details</a>
+                            <a href="{{ route('trip.show', $trip->id) }}"
+                                class="text-blue-600 hover:underline text-sm mt-2 block">View Details</a>
                         </div>
                     @empty
                         <p class="text-gray-500">No trips found.</p>
@@ -75,7 +76,8 @@
                             <p class="text-sm text-gray-500">{{ $day['day'] }}</p>
                             <p class="text-lg font-bold text-gray-900 dark:text-white">{{ $day['temp'] }}°C</p>
                             <p class="text-sm text-gray-500">{{ $day['description'] }}</p>
-                            <img src="http://openweathermap.org/img/wn/{{ $day['icon'] }}@2x.png" alt="Weather Icon" class="mx-auto w-12">
+                            <img src="http://openweathermap.org/img/wn/{{ $day['icon'] }}@2x.png" alt="Weather Icon"
+                                class="mx-auto w-12">
                         </div>
                     @empty
                         <p class="text-gray-500">No forecast data.</p>

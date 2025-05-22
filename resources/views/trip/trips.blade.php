@@ -29,7 +29,7 @@
             @if ($trips->isEmpty())
                 <div class="text-center text-gray-600 dark:text-gray-400 mt-10">
                     <p class="text-lg">You haven't logged any trips yet.</p>
-                    <a href="{{ route('trips.create') }}" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
+                    <a href="{{ route('trip.create') }}" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
                         + Log a New Trip
                     </a>
                 </div>
@@ -51,7 +51,7 @@
                                 </h3>
                                 <p class="text-sm text-gray-600 dark:text-gray-400 mb-1"><strong>Date:</strong> {{ $trip->date }}</p>
                                 <p class="text-sm text-gray-600 dark:text-gray-400 mb-3"><strong>Location:</strong> {{ $trip->location }}</p>
-                                <a href="{{ route('trip.show', $trip->id) }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-3 py-1 rounded">
+                                <a href="{{ route('trips.show', $trip->id) }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-3 py-1 rounded">
                                     View Details
                                 </a>
                             </div>
