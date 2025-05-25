@@ -40,7 +40,7 @@
     @stack('modals')
     @stack('scripts')
     <!-- Alpine.js CDN -->
-    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="{{ asset('js/alpine.js') }}" defer></script>
 </body>
 
 </html>

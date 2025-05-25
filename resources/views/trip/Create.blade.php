@@ -40,6 +40,13 @@
                                 <input type="text" name="location" id="location" required
                                     class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                             </div>
+                            <div class="md:col-span-2">
+                                <label for="wind_direction"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Trip Notes</label>
+                                <input type="text" name="notes" id="notes"
+                                    class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="How Was Your Trip?" />
+                            </div>
                         </div>
                         <!-- Map -->
                         <div class="mt-4">

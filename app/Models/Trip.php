@@ -14,6 +14,7 @@ class Trip extends Model
         'title',
         'latitude',
         'longitude',
+        'location',
         'date',
         'notes',
         'precipitation',
@@ -24,13 +25,13 @@ class Trip extends Model
     ];
 
     protected $casts = [
-        'date'           => 'date',
-        'latitude'       => 'float',
-        'longitude'      => 'float',
-        'precipitation'  => 'float',
-        'moon_phase'     => 'string',
-        'wind_speed'     => 'float',
-        'air_temp'       => 'float',
+        'date' => 'date',
+        'latitude' => 'float',
+        'longitude' => 'float',
+        'precipitation' => 'float',
+        'moon_phase' => 'string',
+        'wind_speed' => 'float',
+        'air_temp' => 'float',
         'wind_direction' => 'string',
     ];
 
@@ -47,5 +48,13 @@ class Trip extends Model
     public function images()
     {
         return $this->hasMany(TripImage::class);
+    }
+    public function getMainImageUrlAttribute()
+    {
+        $image = $this->images()->first();
+        if ($image) {
+            return Storage::url($image->image_path); // assumes 'public' disk
+        }
+        return null;
     }
 }

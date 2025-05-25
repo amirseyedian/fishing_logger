@@ -67,7 +67,9 @@ class TripController extends Controller
             'precipitation' => $request->input('weather_info.precipitation'),
             'moon_phase' => $request->input('weather_info.moon_phase'),
             'wind_speed' => $request->input('weather_info.wind_speed'),
+            'wind_direction' => $request->input('weather_info.wind_direction'),
             'air_temp' => $request->input('air_temp'),
+            'water_temperature' => $request->input('weather_info.water_temperature'),
         ]);
 
         if ($request->hasFile('image_path')) {

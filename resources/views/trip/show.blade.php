@@ -45,19 +45,33 @@
             <p><strong class="text-gray-700 dark:text-gray-300">Coordinates:</strong> {{ $trip->latitude }},
                 {{ $trip->longitude }}
             </p>
-            @if($trip->notes)
-                <p><strong class="text-gray-700 dark:text-gray-300">Trip Notes:</strong> {{ $trip->notes }}</p>
-            @endif
         </div>
 
         <!--Map-->
         <div id="trip-map" style="height: 400px;">
             <h2 class="text-xl font-semibold mt-6">Trip Location</h2>
+            <br>
             <x-leaflet-map :latitude="$trip->latitude" :longitude="$trip->longitude" :label="$trip->title" />
         </div>
+        <br>
+        <!-- trip notes -->
+        @if($trip->notes)
+            <div class="mb-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Trip Notes
+                </h2>
+                <div class="prose dark:prose-invert max-w-none">
+                    {!! nl2br(e($trip->notes)) !!}
+                </div>
+            </div>
+        @endif
+        <br>
         {{-- Weather Info --}}
         <div class="mb-8 bg-blue-50 dark:bg-blue-900 p-5 rounded-lg shadow">
-            <h2 class="text-xl font-semibold text-blue-800 dark:text-white mb-3 flex items-center gap-2">
+            <h2 class="text-2xl font-semibold text-blue-800 dark:text-white mb-3 flex items-center gap-2">
                 <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M12 2a9 9 0 010 18 9 9 0 010-18z" />
                 </svg>
@@ -73,31 +87,48 @@
         </div>
 
         {{-- Catches --}}
-        <div class="mb-8">
-            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <div class="mb-10">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M9 17v-6a3 3 0 016 0v6m-6 0a3 3 0 006 0m-6 0v2a2 2 0 104 0v-2" />
                 </svg>
                 Catches
             </h2>
+
             @if($trip->catches->count())
-                @foreach($trip->catches as $catch)
-                    <div class="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 p-4 rounded mb-4 shadow-sm">
-                        <p><strong>Species:</strong> {{ $catch->species }}</p>
-                        <p><strong>Quantity:</strong> {{ $catch->quantity }}</p>
-                        <p><strong>Length:</strong> {{ $catch->length }} cm</p>
-                        <p><strong>Weight:</strong> {{ $catch->weight ?? 'N/A' }} kg</p>
-                        <p><strong>Depth:</strong> {{ $catch->depth ?? 'N/A' }} m</p>
-                        <p><strong>Water Temp:</strong> {{ $catch->water_temp ?? 'N/A' }} °C</p>
-                        <p><strong>Bait:</strong> {{ $catch->bait ?? 'N/A' }}</p>
-                        <p><strong>Notes:</strong> {{ $catch->notes ?? '—' }}</p>
-                    </div>
-                @endforeach
+                <div class="space-y-6">
+                    @foreach($trip->catches as $catch)
+                        <div
+                            class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow p-6 text-[17px] leading-relaxed">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-gray-800 dark:text-gray-100">
+                                <div>
+                                    <p><strong>Species:</strong> {{ $catch->species }}</p>
+                                    <p><strong>Quantity:</strong> {{ $catch->quantity }}</p>
+                                    <p><strong>Length:</strong> {{ $catch->length }} cm</p>
+                                    <p><strong>Weight:</strong> {{ $catch->weight ?? 'N/A' }} kg</p>
+                                </div>
+                                <div>
+                                    <p><strong>Depth:</strong> {{ $catch->depth ?? 'N/A' }} m</p>
+                                    <p><strong>Water Temp:</strong> {{ $catch->water_temp ?? 'N/A' }} °C</p>
+                                    <p><strong>Bait:</strong> {{ $catch->bait ?? 'N/A' }}</p>
+                                </div>
+                            </div>
+                            @if($catch->notes)
+                                <div class="mt-4 text-gray-700 dark:text-gray-300 text-base">
+                                    <p><strong>Notes:</strong></p>
+                                    <div
+                                        class="mt-1 p-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-[15px] leading-snug">
+                                        {{ $catch->notes }}
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
             @else
-                <p class="text-gray-500 dark:text-gray-400">No catches recorded.</p>
+                <p class="text-gray-500 dark:text-gray-400 italic">No catches recorded for this trip.</p>
             @endif
         </div>
-
         {{-- Action Buttons --}}
         <div class="flex flex-wrap items-center gap-4 mb-6">
             <a href="{{ route('trips.edit', $trip->id) }}"

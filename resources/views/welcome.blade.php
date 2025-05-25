@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +13,7 @@
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="bg-[#f0f4f8] dark:bg-[#0a0a0a] text-gray-800 dark:text-white min-h-screen flex flex-col">
 
     {{-- Navbar --}}
@@ -26,7 +28,8 @@
         @guest
 
         @else
-            <a href="{{ route('trips.index') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded">
+            <a href="{{ route('trips.index') }}"
+                class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded">
                 Go to My Trips
             </a>
         @endguest
@@ -37,4 +40,5 @@
     </footer>
 
 </body>
+
 </html>

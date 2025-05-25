@@ -16,15 +16,13 @@ return new class extends Migration {
             $table->string('title');
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
+            $table->string('location')->nullable();
             $table->date('date');
             $table->text('notes')->nullable();
-
-            // Remove JSON weather_info and use structured fields instead
-            // $table->json('weather_info')->nullable(); // REMOVE THIS LINE
-
             $table->float('precipitation')->nullable();
             $table->string('moon_phase')->nullable();
             $table->float('wind_speed')->nullable();
+            $table->string('wind_direction')->nullable();
             $table->float('air_temp')->nullable();
 
             $table->timestamps();

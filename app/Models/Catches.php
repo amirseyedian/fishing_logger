@@ -17,16 +17,16 @@ class Catches extends Model
         'weight',
         'length',
         'depth',
-        'water_temperature',
+        'water_temp',
         'notes',
     ];
 
     protected $casts = [
-        'quantity'          => 'integer',
-        'weight'            => 'float',
-        'length'            => 'float',
-        'depth'             => 'float',
-        'water_temperature' => 'float',
+        'quantity' => 'integer',
+        'weight' => 'float',
+        'length' => 'float',
+        'depth' => 'float',
+        'water_temp' => 'float',
     ];
 
     public function trip()
