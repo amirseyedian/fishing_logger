@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* resources/css/app.css */
+.nav-link {
+    @apply text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors;
+}
+
+.active-link {
+    @apply font-semibold text-blue-600 dark:text-blue-400;
+}

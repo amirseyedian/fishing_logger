@@ -11,9 +11,13 @@ class CatchesController extends Controller
     public function store(Request $request, Trip $trip)
     {
         $validated = $request->validate([
+            'species' => 'required|string|max:255',
+            'weight' => 'nullable|numeric',
             'length' => 'nullable|numeric',
             'quantity' => 'required|integer|min:1',
             'bait' => 'nullable|string|max:255',
+            'depth' => 'nullable|string|max:255',
+            'water_temp' => 'nullable|numeric',
             'notes' => 'nullable|string',
         ]);
 
@@ -34,9 +38,13 @@ class CatchesController extends Controller
     public function update(Request $request, Catches $catch)
     {
         $validated = $request->validate([
+            'species' => 'required|string|max:255',
+            'weight' => 'nullable|numeric',
             'length' => 'nullable|numeric',
             'quantity' => 'required|integer|min:1',
             'bait' => 'nullable|string|max:255',
+            'depth' => 'nullable|string|max:255',
+            'water_temp' => 'nullable|numeric',
             'notes' => 'nullable|string',
         ]);
 

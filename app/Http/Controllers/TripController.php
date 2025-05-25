@@ -33,14 +33,24 @@ class TripController extends Controller
             'longitude' => 'required|numeric',
             'date' => 'required|date',
             'notes' => 'nullable|string',
-            'weather_info' => 'nullable|array',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'caption' => 'nullable|string|max:255',
+            'weather_info.precipitation' => 'nullable|string|max:255',
+            'weather_info.moon_phase' => 'nullable|string|max:255',
+            'weather_info.wind_speed' => 'nullable|string|max:255',
+            'weather_info.wind_direction' => 'nullable|string|max:255',
+            'weather_info.air_temp' => 'nullable|string|max:255',
+
+            // Updated for multiple images
+            'images' => 'nullable|array',
+            'images.*.file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*.caption' => 'nullable|string|max:255',
+
             'catches' => 'nullable|array',
             'catches.*.species' => 'required_with:catches|string|max:255',
             'catches.*.weight' => 'nullable|numeric',
             'catches.*.quantity' => 'nullable|numeric',
+            'catches.*.water_temp' => 'nullable|numeric',
             'catches.*.bait' => 'nullable|string|max:255',
+            'catches.*.depth' => 'nullable|string|max:255',
             'catches.*.length' => 'nullable|numeric',
             'catches.*.notes' => 'nullable|string',
         ]);
@@ -53,7 +63,11 @@ class TripController extends Controller
             'longitude' => $validated['longitude'],
             'date' => $validated['date'],
             'notes' => $validated['notes'] ?? null,
-            'weather_info' => isset($validated['weather_info']) ? json_encode($validated['weather_info']) : null,
+            // Weather fields
+            'precipitation' => $request->input('weather_info.precipitation'),
+            'moon_phase' => $request->input('weather_info.moon_phase'),
+            'wind_speed' => $request->input('weather_info.wind_speed'),
+            'air_temp' => $request->input('air_temp'),
         ]);
 
         if ($request->hasFile('image_path')) {
@@ -74,12 +88,26 @@ class TripController extends Controller
                     'weight' => $catchData['weight'] ?? null,
                     'length' => $catchData['length'] ?? null,
                     'quantity' => $catchData['quantity'] ?? null,
+                    'water_temp' => $catchData['water_temp'] ?? null,
+                    'depth' => $catchData['depth'] ?? null,
                     'bait' => $catchData['bait'] ?? null,
                     'notes' => $catchData['notes'] ?? null,
                 ]);
             }
         }
+        if (!empty($validated['images'])) {
+            foreach ($validated['images'] as $imageData) {
+                if (isset($imageData['file']) && $imageData['file'] instanceof \Illuminate\Http\UploadedFile) {
+                    $path = $imageData['file']->store('trip_images', 'public');
 
+                    TripImage::create([
+                        'trip_id' => $trip->id,
+                        'image_path' => $path,
+                        'caption' => $imageData['caption'] ?? null,
+                    ]);
+                }
+            }
+        }
         return redirect()->route('trips.index')->with('success', 'Trip successfully added!');
     }
 
@@ -110,6 +138,7 @@ class TripController extends Controller
             'date' => 'required|date',
             'notes' => 'nullable|string',
             'weather_info' => 'nullable|json',
+            'air_temp' => 'nullable|numeric',
         ]);
 
         $trip->update($validated);

@@ -26,9 +26,11 @@ Route::middleware('auth')->group(function () {
 // Trip, Catch, and Image routes
 Route::middleware('auth')->group(function () {
     // Custom trip routes (if you want different naming than resource default)
-    Route::get('/trips', [TripController::class, 'index'])->name('trips.index'); // Show all trips
+    Route::resource('trips', TripController::class);
+
+    //Route::get('/trips', [TripController::class, 'index'])->name('trips.index'); // Show all trips
     Route::get('/trips/{trip}', [TripController::class, 'show'])->name('trips.show'); // singular
-    Route::get('/trip/create', [TripController::class, 'create'])->name('trips.create'); //
+    Route::get('/trip/create', [TripController::class, 'create'])->name('trip.create'); //
     Route::post('/trips', [TripController::class, 'store'])->name('trips.store'); // Store trip
 
     // Catches & Images (nested under a trip)

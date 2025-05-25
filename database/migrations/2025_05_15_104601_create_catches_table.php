@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use function Laravel\Prompts\table;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,10 +17,11 @@ return new class extends Migration
             $table->string('species');
             $table->decimal('weight', 5, 2)->nullable();
             $table->decimal('length', 5, 2)->nullable();
+            $table->decimal('water_temp', 5, 2)->nullable();
             $table->unsignedInteger('quantity')->default(1);
             $table->string('bait')->nullable();
             $table->string('depth')->nullable();
-            $table->text('notes')->nullable(); 
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

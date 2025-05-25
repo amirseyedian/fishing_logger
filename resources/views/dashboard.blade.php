@@ -41,7 +41,7 @@
                             <h4 class="font-semibold text-gray-900 dark:text-white">{{ $trip->title }}</h4>
                             <p class="text-sm text-gray-500">{{ $trip->date->format('M d, Y') }}</p>
                             <p class="mt-2 text-gray-700 dark:text-gray-300">Catches: {{ $trip->catches_count }}</p>
-                            <a href="{{ route('trip.show', $trip->id) }}"
+                            <a href="{{ route('trips.show', $trip->id) }}"
                                 class="text-blue-600 hover:underline text-sm mt-2 block">View Details</a>
                         </div>
                     @empty
