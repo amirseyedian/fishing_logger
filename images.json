@@ -368,12 +368,12 @@
     },
     {
       "legacy_id": 138,
-      "image_file": "trip_images/36993Untitled-2.jpg",
+      "image_path": "trip_images/36993Untitled-2.jpg",
       "caption": null
     },
     {
       "legacy_id": 141,
-      "image_file": "trip_images/3878quarentine.jpg",
+      "image_path": "trip_images/3878quarentine.jpg",
       "caption": null
     },
     {
@@ -663,42 +663,42 @@
     },
     {
       "legacy_id": 184,
-      "filename": "73956t.jpg"
+      "image_path": "trip_images/73956t.jpg"
     },
     {
       "legacy_id": 185,
-      "filename": "7349IMG_9491_1.jpg"
+      "image_path": "trip_images/7349IMG_9491_1.jpg"
     },
     {
       "legacy_id": 185,
-      "filename": "63271IMG_9499.jpg"
+      "image_path": "trip_images/63271IMG_9499.jpg"
     },
     {
       "legacy_id": 185,
-      "filename": "54078tides.jpg"
+      "image_path": "trip_images/54078tides.jpg"
     },
     {
       "legacy_id": 187,
-      "filename": "95461mully.jpg"
+      "image_path": "trip_images/95461mully.jpg"
     },
     {
       "legacy_id": 190,
-      "image_url": "72327IMG-20130527-WA0000.jpg"
+      "image_path": "trip_images/72327IMG-20130527-WA0000.jpg"
     },
     {
       "legacy_id": 190,
-      "image_url": "60512IMG-20130528-WA0003.jpg"
+      "image_path": "trip_images/60512IMG-20130528-WA0003.jpg"
     },
     {
       "legacy_id": 190,
-      "image_url": "82935IMG-20130528-WA0004.jpg"
+      "image_path": "trip_images/82935IMG-20130528-WA0004.jpg"
     },
     {
       "legacy_id": 192,
-      "image_url": "75886s1.jpg"
+      "image_path": "trip_images/75886s1.jpg"
     },
     {
       "legacy_id": 192,
-      "image_url": "76683s2.jpg"
+      "image_path": "trip_images/76683s2.jpg"
     }
 ]

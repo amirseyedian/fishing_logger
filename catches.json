@@ -365,7 +365,7 @@
     {
       "legacy_id": 108,
       "species": "Salmon Trout",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": "Squid and Half Pilchards"
@@ -373,7 +373,7 @@
     {
       "legacy_id": 108,
       "species": "Mullet",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": null
@@ -405,7 +405,7 @@
     {
       "legacy_id": 111,
       "species": "Crab",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": "Whole Squid"
@@ -413,7 +413,7 @@
     {
       "legacy_id": 111,
       "species": "Yellowfin Whiting",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": null
@@ -437,7 +437,7 @@
     {
       "legacy_id": 113,
       "species": "Salmon Trout",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": "Live bait (float and free swimming)"
@@ -445,7 +445,7 @@
     {
       "legacy_id": 113,
       "species": "Salmon Trout",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": "Trolling"
@@ -469,7 +469,7 @@
     {
       "legacy_id": 115,
       "species": "Tommy Ruff",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": null
@@ -477,7 +477,7 @@
     {
       "legacy_id": 115,
       "species": "Silver Whiting",
-      "quantity": null,
+      "quantity": 1,
       "length": null,
       "time_caught": null,
       "bait": null
@@ -887,7 +887,7 @@
     {
       "legacy_id": 165,
       "species": "Rock Cod",
-      "quantity": null,
+      "quantity": 1,
       "notes": "Caught by Ken"
     },
     {
