@@ -93,7 +93,7 @@
                 <div x-show="view === 'list'">
     @foreach ($trips as $index => $trip)
         <a href="{{ route('trips.show', $trip->id) }}"
-            class="block p-4 bg-white dark:bg-gray-800 shadow-sm rounded-md hover:ring-2 hover:ring-blue-500 transition">
+           class="block p-4 bg-white dark:bg-gray-800 shadow-sm rounded-md hover:ring-2 hover:ring-blue-500 transition">
             <div>
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
                     {{ $trip->title }}
@@ -103,11 +103,11 @@
                     &nbsp;&nbsp;
                     <strong>Location:</strong> {{ $trip->location }}
                 </p>
-                @if($trip->notes)
-                    <p class="text-sm text-gray-500 dark:text-gray-300 mt-1">
-                        {{ Str::limit($trip->notes, 120) }}
-                    </p>
-                @endif
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    <strong>Moon Phase:</strong> {{ $trip->moon_phase ?? 'N/A' }}
+                    &nbsp;&nbsp;
+                    <strong>Wind Speed:</strong> {{ is_numeric($trip->wind_speed) ? $trip->wind_speed . ' km/h' : 'N/A' }}
+                </p>
             </div>
         </a>
         @if (!$loop->last)
