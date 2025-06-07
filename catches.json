@@ -1,0 +1,1079 @@
+[
+  {
+    "legacy_id": 3,
+    "species": "Blue Swimmer Crabs",
+    "weight": null,
+    "length": null,
+    "bait": "Fish - salmon, mackerel",
+    "quantity": 30,
+    "depth": "0",
+    "water_temp": 0,
+    "notes": null
+  },
+  {
+    "legacy_id": 4,
+    "species": "Squid",
+    "weight": 2,
+    "length": 30,
+    "bait": "Squid Jag - Orange",
+    "quantity": 2,
+    "depth": "meters",
+    "water_temp": 0,
+    "notes": null
+  },
+  {
+    "legacy_id": 4,
+    "species": "Snook",
+    "weight": 0,
+    "length": 50,
+    "bait": "Yozuri bibbed - white/red",
+    "quantity": 1,
+    "depth": "meters",
+    "water_temp": 0,
+    "notes": null
+  },
+  {
+    "legacy_id": 4,
+    "species": "Leatherjacket",
+    "weight": 1,
+    "length": 30,
+    "bait": "Squid",
+    "quantity": 1,
+    "depth": "meters",
+    "water_temp": 0,
+    "notes": null
+  },
+  {
+    "legacy_id": 4,
+    "species": "Tommy Ruff",
+    "weight": 1,
+    "length": 20,
+    "bait": "Squid",
+    "quantity": 1,
+    "depth": "meters",
+    "water_temp": 0,
+    "notes": null
+  },
+  {
+    "legacy_id": 4,
+    "species": "Pike",
+    "weight": 2,
+    "length": 35,
+    "bait": "Yozuri bibbed - white/red",
+    "quantity": 1,
+    "depth": "meters",
+    "water_temp": 0,
+    "notes": null
+  },
+  {
+    "legacy_id": 37,
+    "species": "Squid",
+    "weight": 0,
+    "length": 45,
+    "bait": "Squid Jag - Green",
+    "quantity": 4,
+    "depth": "feet",
+    "water_temp": 20,
+    "notes": null
+  },
+  {
+    "legacy_id": 37,
+    "species": "Crab",
+    "weight": 0,
+    "length": 15,
+    "bait": "Crab Net with Chicken",
+    "quantity": 12,
+    "depth": "feet",
+    "water_temp": 20,
+    "notes": null
+  },
+  {
+    "legacy_id": 41,
+    "species": "silver whitting",
+    "weight": 0,
+    "length": 0,
+    "bait": "beach worms",
+    "quantity": 6,
+    "depth": "meters",
+    "water_temp": 20,
+    "notes": null
+  },
+  {
+    "legacy_id": 41,
+    "species": "tommies",
+    "weight": 0,
+    "length": 0,
+    "bait": "beach worms",
+    "quantity": 9,
+    "depth": "meters",
+    "water_temp": 20,
+    "notes": null
+  },
+  {
+    "legacy_id": 43,
+    "species": "Tommy Ruff",
+    "weight": 0,
+    "length": 12,
+    "bait": "Worms",
+    "quantity": 36,
+    "depth": "meters",
+    "water_temp": null,
+    "notes": null
+  },
+  {
+    "legacy_id": 43,
+    "species": "Blue Swimmer Crabs",
+    "weight": 0,
+    "length": 0,
+    "bait": "Cat Food",
+    "quantity": 4,
+    "depth": "meters",
+    "water_temp": null,
+    "notes": null
+  },
+  {
+    "legacy_id": 44,
+    "species": "tommies",
+    "weight": 10,
+    "length": 0,
+    "bait": "bait",
+    "quantity": 36,
+    "depth": "feet",
+    "water_temp": null,
+    "notes": null
+  },
+  {
+    "legacy_id": 48,
+    "species": "Snook",
+    "weight": 1,
+    "length": 45,
+    "bait": "Pink Lemonade 4",
+    "quantity": 1,
+    "depth": "meters",
+    "water_temp": null,
+    "notes": null
+  },
+  
+    {
+      "legacy_id": 53,
+      "species": "School Mulloway",
+      "weight": 3,
+      "length": 33,
+      "bait": "Fillet of Salmon Trout",
+      "quantity": 1,
+      "depth": "3 meters"
+    },
+    {
+      "legacy_id": 53,
+      "species": "School Mulloway",
+      "weight": 3,
+      "length": 40,
+      "bait": "3 Fry Gulp",
+      "quantity": 2,
+      "depth": "3 meters"
+    },
+    {
+      "legacy_id": 53,
+      "species": "Salmon Trout",
+      "weight": 0,
+      "length": 18,
+      "bait": null,
+      "quantity": 1,
+      "depth": "3 meters"
+    },
+    {
+      "legacy_id": 53,
+      "species": "Salmon Trout",
+      "weight": 0,
+      "length": 24,
+      "bait": null,
+      "quantity": 1,
+      "depth": "3 meters"
+    }
+  ,
+  
+    {
+      "legacy_id": 54,
+      "species": "Squid",
+      "weight": 0,
+      "length": 0,
+      "bait": "Squid Jag",
+      "quantity": 4,
+      "depth": "35 feet"
+    },
+    {
+      "legacy_id": 54,
+      "species": "Leather Jackets",
+      "weight": 0,
+      "length": 0,
+      "bait": "Squid tentacles",
+      "quantity": 4,
+      "depth": "35 feet"
+    }
+  ,
+  
+    {
+      "legacy_id": 57,
+      "species": "School Mulloway",
+      "weight": 3,
+      "length": 41,
+      "bait": "Pilchards & 3\" Fry Gulp",
+      "quantity": 4,
+      "depth": "4 meters"
+    },
+    {
+      "legacy_id": 57,
+      "species": "Flathead",
+      "weight": 2,
+      "length": 50,
+      "bait": "3\" Fry - Pumpkinseed",
+      "quantity": 1,
+      "depth": "4 meters"
+    },
+    {
+      "legacy_id": 57,
+      "species": "Salmon",
+      "weight": 2,
+      "length": 40,
+      "bait": "3\" Fry - Pumpkinseed",
+      "quantity": 1,
+      "depth": "4 meters"
+    },
+    {
+      "legacy_id": 57,
+      "species": "Salmon Trout",
+      "weight": 0,
+      "length": 22,
+      "bait": "3\" + 4\" Soft Plastics",
+      "quantity": 4,
+      "depth": "4 meters"
+    }
+  ,
+  
+    {
+      "legacy_id": 89,
+      "species": "School Mulloway",
+      "weight": 2,
+      "length": 31,
+      "bait": "Pilchard",
+      "quantity": 1,
+      "depth": "5 meters"
+    },
+    {
+      "legacy_id": 89,
+      "species": "Salmon",
+      "weight": 2,
+      "length": 33,
+      "bait": "Pilchard, 3 inch plastics",
+      "quantity": 3,
+      "depth": "5 meters"
+    }
+  ,
+  
+    {
+      "legacy_id": 93,
+      "species": "School Mulloway",
+      "weight": 2,
+      "length": 30,
+      "bait": "3 inch Fry - Nuclear Chicken",
+      "quantity": 1,
+      "depth": "4 meters"
+    }
+  ,
+  
+    {
+      "legacy_id": 96,
+      "species": "Tommy Ruff",
+      "weight": 1,
+      "length": 25,
+      "bait": "2-3 inch Soft Plastics",
+      "quantity": 4,
+      "depth": "1 meters"
+    }
+  ,
+  
+    {
+      "legacy_id": 103,
+      "species": "Bronzie Whaler",
+      "quantity": 1,
+      "length": 150,
+      "time_caught": "03:30",
+      "bait": "Small California Squid"
+    }
+  ,
+  
+    {
+      "legacy_id": 104,
+      "species": "Bronzie Whaler",
+      "quantity": 1,
+      "length": 90,
+      "time_caught": "15:30",
+      "bait": "Small California Squid"
+    },
+    {
+      "legacy_id": 104,
+      "species": "School Mulloway",
+      "quantity": 1,
+      "length": 30,
+      "time_caught": "14:00",
+      "bait": "Pilchard"
+    }
+  ,
+  
+    {
+      "legacy_id": 105,
+      "species": "Mulloway",
+      "quantity": 1,
+      "length": 76,
+      "time_caught": "15:30",
+      "bait": "Whole Pilchard"
+    },
+    {
+      "legacy_id": 105,
+      "species": "Eagle Rays",
+      "quantity": 2,
+      "length": 60,
+      "time_caught": "16:00",
+      "bait": "Squid"
+    }
+  ,
+  
+    {
+      "legacy_id": 106,
+      "species": "Elephant Sharks",
+      "quantity": 20,
+      "length": null,
+      "time_caught": "21:00",
+      "bait": "Squid + Pilchards"
+    },
+    {
+      "legacy_id": 107,
+      "species": "Elephant Sharks",
+      "quantity": 20,
+      "length": null,
+      "time_caught": "21:00",
+      "bait": "Squid + Pilchards"
+    },
+    {
+      "legacy_id": 108,
+      "species": "Salmon",
+      "quantity": 3,
+      "length": null,
+      "time_caught": null,
+      "bait": "Squid and Half Pilchards"
+    },
+    {
+      "legacy_id": 108,
+      "species": "Salmon Trout",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": "Squid and Half Pilchards"
+    },
+    {
+      "legacy_id": 108,
+      "species": "Mullet",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": null
+    },
+    {
+      "legacy_id": 109,
+      "species": "Australian Salmon",
+      "quantity": 4,
+      "length": null,
+      "time_caught": "13:30",
+      "bait": "Squid/Pilchard Pieces"
+    },
+    {
+      "legacy_id": 110,
+      "species": "Squid",
+      "quantity": 2,
+      "length": 45,
+      "time_caught": "15:00",
+      "bait": "Squid Jig"
+    },
+    {
+      "legacy_id": 110,
+      "species": "Red Mullet",
+      "quantity": 1,
+      "length": 25,
+      "time_caught": "15:00",
+      "bait": "Red head  Blade"
+    },
+    {
+      "legacy_id": 111,
+      "species": "Crab",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": "Whole Squid"
+    },
+    {
+      "legacy_id": 111,
+      "species": "Yellowfin Whiting",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": null
+    },
+    {
+      "legacy_id": 112,
+      "species": "Squid",
+      "quantity": 2,
+      "length": 30,
+      "time_caught": "19:00",
+      "bait": "Squid jig with white head"
+    },
+    {
+      "legacy_id": 112,
+      "species": "Squid",
+      "quantity": 1,
+      "length": null,
+      "time_caught": null,
+      "bait": null
+    },
+    {
+      "legacy_id": 113,
+      "species": "Salmon Trout",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": "Live bait (float and free swimming)"
+    },
+    {
+      "legacy_id": 113,
+      "species": "Salmon Trout",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": "Trolling"
+    },
+    {
+      "legacy_id": 115,
+      "species": "Mulloway",
+      "quantity": 1,
+      "length": 60,
+      "time_caught": "01:30",
+      "bait": "Live Mullet"
+    },
+    {
+      "legacy_id": 115,
+      "species": "Ray (suspected)",
+      "quantity": 3,
+      "length": null,
+      "time_caught": null,
+      "bait": "Unknown"
+    },
+    {
+      "legacy_id": 115,
+      "species": "Tommy Ruff",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": null
+    },
+    {
+      "legacy_id": 115,
+      "species": "Silver Whiting",
+      "quantity": null,
+      "length": null,
+      "time_caught": null,
+      "bait": null
+    },
+    {
+      "legacy_id": 116,
+      "species": "Mulloway",
+      "quantity": 3,
+      "length": 60,
+      "time_caught": "01:30",
+      "bait": "Live Small Tommy"
+    },
+    {
+      "legacy_id": 116,
+      "species": "Mulloway",
+      "quantity": 3,
+      "length": 50,
+      "time_caught": "04:00",
+      "bait": "Live Mullet"
+    },
+    {
+      "legacy_id": 116,
+      "species": "Eagle ray",
+      "quantity": 20,
+      "length": 0,
+      "time_caught": "05:00",
+      "bait": "Live Salmon Trout"
+    },
+    {
+      "legacy_id": 132,
+      "species": "Snook",
+      "quantity": 1,
+      "length": 100,
+      "time_caught": "16:00",
+      "bait": "Minnow Yo-Zuri"
+    },
+    {
+      "legacy_id": 132,
+      "species": "Salmon",
+      "quantity": 2,
+      "length": 50,
+      "time_caught": "0",
+      "bait": "Squidgy Flick Bait - Pilchard "
+    },
+    {
+      "legacy_id": 132,
+      "species": "Red Mullet",
+      "quantity": 0,
+      "length": 0,
+      "time_caught": "0",
+      "bait": "Cockle"
+    },
+    {
+      "legacy_id": 133,
+      "species": "King George Whitting",
+      "quantity": 0,
+      "length": 15,
+      "time_caught": "0",
+      "bait": "cockle / gents"
+    },
+    {
+      "legacy_id": 135,
+      "species": "Port Jackson Sharks",
+      "weight": 0,
+      "length": 60,
+      "bait": "Live Trumpeter",
+      "quantity": 2,
+      "depth": "9 meters"
+    },
+    {
+      "legacy_id": 137,
+      "species": "Dog Shark",
+      "weight": 1,
+      "length": 60,
+      "bait": "Live Garfish",
+      "quantity": 1,
+      "depth": "1 feet"
+    },
+    {
+      "legacy_id": 138,
+      "species": "Salmon Trout",
+      "weight": 1,
+      "length": 25,
+      "bait": "Atomic Soft Plastic and little pilchard pattern Yo-zuri minnow",
+      "quantity": 6,
+      "depth": "7 to 10 meters"
+    },
+    {
+      "legacy_id": 141,
+      "species": "Salmon Trout",
+      "weight": 0,
+      "length": 0,
+      "bait": "Pilchard Patter Minnow Yo-Zuri",
+      "quantity": 1,
+      "depth": "28"
+    },
+    {
+      "legacy_id": 142,
+      "species": "Squid",
+      "weight": 0,
+      "length": 0,
+      "bait": "Pink 3.0 Jig + 4.0 Red head Si",
+      "quantity": 1,
+      "depth": "40"
+    },
+    {
+      "legacy_id": 143,
+      "species": "Flathead",
+      "weight": 0,
+      "length": 60,
+      "bait": "Whole Pilchard",
+      "quantity": 1,
+      "depth": "7 meters"
+    },
+    {
+      "legacy_id": 143,
+      "species": "Octopus",
+      "weight": 0,
+      "length": 90,
+      "bait": "Whole Pilchard",
+      "quantity": 1,
+      "depth": "7 meters"
+    },
+    {
+      "legacy_id": 143,
+      "species": "King George Whitting",
+      "weight": 0,
+      "length": 40,
+      "bait": "Squid",
+      "quantity": 1,
+      "depth": "7 meters"
+    },
+    {
+      "legacy_id": 144,
+      "species": "Salmon Trout",
+      "weight": 0,
+      "length": 25,
+      "bait": "Little Yo-Zuri Minnor Pilchard",
+      "quantity": 1,
+      "depth": "8 meters"
+    },
+    {
+      "legacy_id": 144,
+      "species": "Salmon",
+      "weight": 0,
+      "length": 45,
+      "bait": "Chromie",
+      "quantity": 2,
+      "depth": "8 meters"
+    },
+    {
+      "legacy_id": 145,
+      "species": "Dog Shark",
+      "weight": 60,
+      "length": 0,
+      "bait": "Butterflied Salmon",
+      "quantity": 1,
+      "depth": "5 meters"
+    },
+    {
+      "legacy_id": 146,
+      "species": "Garfish",
+      "weight": 40,
+      "length": 0,
+      "bait": "Gents",
+      "quantity": 0,
+      "depth": "9 meters"
+    },
+    {
+      "legacy_id": 146,
+      "species": "Snook",
+      "weight": 70,
+      "length": 0,
+      "bait": "Minnows",
+      "quantity": 0,
+      "depth": "9 meters"
+    },
+    {
+      "legacy_id": 146,
+      "species": "Tommy Ruff",
+      "weight": 15,
+      "length": 0,
+      "bait": "Gents",
+      "quantity": 0,
+      "depth": "9 meters"
+    },
+    {
+      "legacy_id": 148,
+      "species": "Eagle Ray",
+      "weight": 50,
+      "length": 100,
+      "bait": "Butterflied Salmon Trout",
+      "quantity": 1,
+      "depth": "15 feet"
+    },
+    {
+      "legacy_id": 148,
+      "species": "Salmon Trout",
+      "weight": 0,
+      "length": 16,
+      "bait": "Small Squid Pieces",
+      "quantity": 0,
+      "depth": "15 feet"
+    },
+    {
+      "legacy_id": 149,
+      "species": "Eagle Rays",
+      "weight": 50,
+      "length": 1,
+      "bait": "Butterflied Salmon Trout",
+      "quantity": 3,
+      "depth": "20 feet"
+    }
+,
+    {
+      "legacy_id": 150,
+      "species": "Salmon Trout",
+      "weight": 20,
+      "length": 1,
+      "bait": "Minnow and plastics",
+      "quantity": 15,
+      "depth": "17-22 feet"
+    },
+    {
+      "legacy_id": 150,
+      "species": "Squid",
+      "weight": 20,
+      "length": 1,
+      "bait": "Red head Squid Jig",
+      "quantity": 2,
+      "depth": "16-18 feet"
+    },
+    {
+      "legacy_id": 150,
+      "species": "Dog Shark",
+      "weight": 0,
+      "length": 0,
+      "bait": null,
+      "quantity": 3,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 151,
+      "species": "Ray",
+      "weight": null,
+      "length": null,
+      "bait": "Live salmon trout",
+      "quantity": 1,
+      "depth": null
+    },
+    {
+      "legacy_id": 151,
+      "species": "Port Jackson shark",
+      "weight": null,
+      "length": null,
+      "bait": null,
+      "quantity": 2,
+      "depth": null
+    },
+    {
+      "legacy_id": 151,
+      "species": "Small shark",
+      "weight": null,
+      "length": null,
+      "bait": null,
+      "quantity": 1,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 152,
+      "species": "Salmon Trout",
+      "weight": 22,
+      "length": 0,
+      "bait": "Minnows - small",
+      "quantity": 1,
+      "depth": "0 meters"
+    },
+    {
+      "legacy_id": 152,
+      "species": "Dog Shark",
+      "weight": 40,
+      "length": 0,
+      "bait": "Salmon trout fillet",
+      "quantity": 1,
+      "depth": "0 meters"
+    }
+,
+    {
+      "legacy_id": 154,
+      "species": "Garfish",
+      "weight": 0,
+      "length": 0,
+      "bait": "Dabbed",
+      "quantity": 8
+    },
+    {
+      "legacy_id": 154,
+      "species": "Small Tommy",
+      "weight": 0,
+      "length": 0,
+      "bait": "Dabbed",
+      "quantity": 1
+    }
+,
+    {
+      "legacy_id": 155,
+      "species": "Nannygai",
+      "weight": 50,
+      "length": 40,
+      "bait": "Bait",
+      "quantity": 1,
+      "depth": "0"
+    },
+    {
+      "legacy_id": 155,
+      "species": "Bluefin Tuna",
+      "weight": 100,
+      "length": 30,
+      "bait": "Pink skirts + Red head / white",
+      "quantity": 10,
+      "depth": "0"
+    }
+,
+    {
+      "legacy_id": 158,
+      "species": "Tailor",
+      "weight": 0,
+      "length": 0,
+      "bait": "",
+      "quantity": 1,
+      "depth": ""
+    },
+    {
+      "legacy_id": 158,
+      "species": "Dog Sharks",
+      "weight": 0,
+      "length": 0,
+      "bait": "",
+      "quantity": 0,
+      "depth": ""
+    },
+    {
+      "legacy_id": 158,
+      "species": "Fiddler Ray",
+      "weight": 0,
+      "length": 0,
+      "bait": "",
+      "quantity": 1,
+      "depth": ""
+    },
+    {
+      "legacy_id": 158,
+      "species": "Small Gar",
+      "weight": 0,
+      "length": 0,
+      "bait": "",
+      "quantity": 0,
+      "depth": ""
+    },
+    {
+      "legacy_id": 158,
+      "species": "Salmon Trout",
+      "weight": 0,
+      "length": 0,
+      "bait": "",
+      "quantity": 0,
+      "depth": ""
+    }
+,
+    {
+      "legacy_id": 159,
+      "species": "Snapper",
+      "weight": 50,
+      "length": 60,
+      "bait": "Fresh squid and snook fillets",
+      "quantity": 5,
+      "depth": ""
+    },
+    {
+      "legacy_id": 159,
+      "species": "Snook",
+      "weight": 80,
+      "length": 0,
+      "bait": "",
+      "quantity": 2,
+      "depth": ""
+    }
+,
+    {
+      "legacy_id": 165,
+      "species": "Snook",
+      "quantity": 3
+    },
+    {
+      "legacy_id": 165,
+      "species": "Salmon Trout",
+      "quantity": 2
+    },
+    {
+      "legacy_id": 165,
+      "species": "Squid",
+      "quantity": 1,
+      "notes": "Small"
+    },
+    {
+      "legacy_id": 165,
+      "species": "Rock Cod",
+      "quantity": null,
+      "notes": "Caught by Ken"
+    },
+    {
+      "legacy_id": 165,
+      "species": "Dog Shark",
+      "quantity": 1,
+      "notes": "Small"
+    }
+,
+    {
+      "legacy_id": 171,
+      "species": "Salmon trout",
+      "quantity": 2,
+      "length": 25,
+      "bait": "Small brown/gold soft plastic.",
+      "time": "11:00",
+      "notes": "Both caught by Stathi"
+    }
+,
+    {
+      "legacy_id": 172,
+      "species": "Snapper",
+      "quantity": 1,
+      "length": 44,
+      "bait": "Snook fillet",
+      "time": "13:00"
+    },
+    {
+      "legacy_id": 172,
+      "species": "Snook",
+      "quantity": 2,
+      "length": 60,
+      "bait": "Yo-Zuri 90mm Minnow Pilchard",
+      "time": "12:00"
+    },
+    {
+      "legacy_id": 172,
+      "species": "Rock Cod",
+      "quantity": 1,
+      "length": null,
+      "bait": "Squid",
+      "time": null
+    },
+    {
+      "legacy_id": 172,
+      "species": "Squid",
+      "quantity": 1,
+      "length": null,
+      "bait": "Dark Jig",
+      "time": null
+    }
+,
+    {
+      "legacy_id": 173,
+      "species": "Snapper",
+      "quantity": 1,
+      "length": 75,
+      "weight": 7,
+      "bait": "Fresh Squid Strip",
+      "time": "08:00"
+    },
+    {
+      "legacy_id": 173,
+      "species": "Squid",
+      "quantity": 2,
+      "length": null,
+      "weight": null,
+      "bait": "Pink Jig - Black Jig",
+      "time": "07:30"
+    },
+    {
+      "legacy_id": 173,
+      "species": "Salmon",
+      "quantity": 2,
+      "length": 60,
+      "weight": 2,
+      "bait": "Diving minnows",
+      "time": "01:00"
+    }
+,
+    {
+      "legacy_id": 174,
+      "species": "Snapper",
+      "quantity": 1,
+      "length": 90,
+      "weight": 8,
+      "bait": "IQF Pilchard",
+      "time": "08:00"
+    }
+,
+    {
+      "legacy_id": 177,
+      "species": "Kingfish",
+      "weight": 15,
+      "length": 120,
+      "bait": "Williamson Jet Popper - Green",
+      "quantity": 1,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 181,
+      "species": "Dog Shark",
+      "weight": null,
+      "length": null,
+      "bait": "bottom bait",
+      "quantity": 1,
+      "depth": null
+    },
+    {
+      "legacy_id": 181,
+      "species": "Ray (suspected)",
+      "weight": null,
+      "length": null,
+      "bait": "bottom bait",
+      "quantity": 1,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 182,
+      "species": "Unknown (hook-up event)",
+      "weight": null,
+      "length": null,
+      "bait": "live ST",
+      "quantity": 1,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 183,
+      "species": "Salmon Trout (ST)",
+      "weight": null,
+      "length": null,
+      "bait": null,
+      "quantity": 2,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 184,
+      "species": "Salmon",
+      "weight": null,
+      "length": null,
+      "bait": "Plastics",
+      "quantity": 1,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 185,
+      "species": "Mulloway",
+      "weight": 16,
+      "length": 122,
+      "bait": "Live Salmon Trout",
+      "quantity": 1,
+      "depth": 9
+    }
+,
+    {
+      "legacy_id": 190,
+      "species": "Mulloway",
+      "weight": 19,
+      "length": 127,
+      "bait": "Live Salmon Trout",
+      "quantity": 1,
+      "depth": null
+    }
+,
+    {
+      "legacy_id": 192,
+      "species": "Big Squid",
+      "weight": null,
+      "length": null,
+      "bait": null,
+      "quantity": 1,
+      "depth": null
+    },
+    {
+      "legacy_id": 192,
+      "species": "Salmon",
+      "weight": null,
+      "length": null,
+      "bait": null,
+      "quantity": 2,
+      "depth": null
+    }
+  
+]

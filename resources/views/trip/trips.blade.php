@@ -14,6 +14,16 @@
 
 @section('content')
     <div x-data="{ view: 'grid' }" class="py-10">
+        <div x-data="{
+        view: '{{ request()->query('view', 'grid') }}',
+        setView(newView) {
+            this.view = newView;
+            const url = new URL(window.location);
+            url.searchParams.set('view', newView);
+            url.searchParams.delete('page'); // Reset pagination to page 1
+            window.location = url.toString();
+        }
+    }" class="py-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if (session('success'))
                 <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)"
@@ -33,11 +43,11 @@
             @else
                 {{-- View Toggle Buttons --}}
                                 <div class="mb-4 flex justify-end">
-                    <button @click="view = 'grid'" :class="{ 'bg-blue-600 text-white': view === 'grid' }"
+                    <button @click="setView('grid')" :class="{ 'bg-blue-600 text-white': view === 'grid' }"
                         class="px-4 py-2 text-sm rounded-l border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
                         Grid View
                     </button>
-                    <button @click="view = 'list'" :class="{ 'bg-blue-600 text-white': view === 'list' }"
+                    <button @click="setView('list')" :class="{ 'bg-blue-600 text-white': view === 'list' }"
                         class="px-4 py-2 text-sm rounded-r border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
                         List View
                     </button>
