@@ -23,7 +23,7 @@ class TripController extends Controller
         $trips = auth()->user()
             ->trips()
             ->latest()
-            ->paginate(20)
+            ->paginate(50)
             ->withQueryString(); // retains the view mode in pagination URLs
 
         return view('trip.trips', compact('trips', 'view'));

@@ -1,12 +1,8 @@
-Here is a comprehensive README.md file for your Laravel-based Fishing Trip Logger project, including all steps for deployment and importing the legacy JSON data:
-
-⸻
-
 🐟 Fishing Trip Logger – Legacy Data Migration & Deployment Guide
 
 This Laravel application logs fishing trips, catches, and images, and allows importing legacy data from structured JSON files.
 
-⸻
+
 
 🚀 Deployment Guide
 
@@ -16,14 +12,14 @@ This Laravel application logs fishing trips, catches, and images, and allows imp
 cd fishing-trip-logger
 
 
-⸻
+
 
 2. Install dependencies
 
 composer install
 
 
-⸻
+
 
 3. Set up your environment
 
@@ -42,21 +38,20 @@ DB_USERNAME=your_db_user
 DB_PASSWORD=your_db_password
 
 
-⸻
+
 
 4. Set directory permissions (Linux/macOS)
 
 chmod -R 775 storage bootstrap/cache
 
 
-⸻
+
 
 5. Run migrations
 
 php artisan migrate
 
 
-⸻
 
 6. Seed a default user (optional)
 
@@ -79,8 +74,6 @@ File structure must include:
 	•	images.json – Flat list of images with legacy_id mapping back to a trip
 
 
-⸻
-
 2. Run the import command
 
 php artisan legacy:import
@@ -95,12 +88,3 @@ It logs:
 	•	Skipped entries
 	•	Error details if any issue occurs
 
-
-⸻
-
-
-📬 Support
-
-For help, reach out to the repository maintainer or open an issue.
-
-⸻
