@@ -11,10 +11,22 @@ use Illuminate\Support\Facades\Storage;
 class TripController extends Controller
 {
     // Show all trips for the authenticated user
-    public function index()
+/*     public function index()
     {
         $trips = auth()->user()->trips()->latest()->get();
         return view('trip.trips', compact('trips'));
+    } */
+    public function index(Request $request)
+    {
+        $view = $request->query('view', 'grid');
+
+        $trips = auth()->user()
+            ->trips()
+            ->latest()
+            ->paginate(20)
+            ->withQueryString(); // retains the view mode in pagination URLs
+
+        return view('trip.trips', compact('trips', 'view'));
     }
 
     // Show form to create a new trip

@@ -41,6 +41,16 @@
     @stack('scripts')
     <!-- Alpine.js CDN -->
     <script src="{{ asset('js/alpine.js') }}" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const paginationLinks = document.querySelectorAll('nav[role="navigation"] a');
+            paginationLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
