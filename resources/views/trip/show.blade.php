@@ -46,7 +46,28 @@
                 {{ $trip->longitude }}
             </p>
         </div>
+        <!-- Section: Fishing Action -->
+        <div class="mb-8">
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-2 border-b border-gray-300 dark:border-gray-600 pb-1">
+                Fishing Action
+            </h2>
 
+            <p>
+                @switch($trip->action)
+                    @case('hot')
+                        <span class="inline-block px-3 py-1 bg-red-100 text-red-700 rounded-full font-medium">Hot</span>
+                        @break
+                    @case('medium')
+                        <span class="inline-block px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full font-medium">Medium</span>
+                        @break
+                    @case('slow')
+                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">Slow</span>
+                        @break
+                    @default
+                        <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full font-medium">None</span>
+                @endswitch
+            </p>
+        </div>
         <!--Map-->
         <div id="trip-map" style="height: 400px;">
             <h2 class="text-xl font-semibold mt-6">Trip Location</h2>

@@ -22,6 +22,7 @@ class Trip extends Model
         'wind_speed',
         'air_temp',
         'wind_direction',
+        'action',
     ];
 
     protected $casts = [

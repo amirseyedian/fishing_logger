@@ -71,6 +71,7 @@ class ImportLegacyData extends Command
                     'wind_speed' => is_numeric($data['wind_speed'] ?? null) ? $data['wind_speed'] : null,
                     'wind_direction' => $data['wind_direction'] ?? null,
                     'air_temp' => is_numeric($data['air_temp'] ?? null) ? $data['air_temp'] : null,
+                    'action' => $data['action'] ?? 'None'
                 ]);
                 $legacyToNewId[$data['legacy_id']] = $trip->id;
                 $this->info("Imported trip legacy_id {$data['legacy_id']} -> trip id {$trip->id}");

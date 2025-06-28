@@ -87,6 +87,22 @@
                                         <p class="text-sm text-gray-600 dark:text-gray-400">
                                             <strong>Location:</strong> {{ $trip->location }}
                                         </p>
+                                        <p class="text-sm mt-2">
+                                        <strong class="text-gray-600 dark:text-gray-400">Action:</strong>
+                                        @switch($trip->action)
+                                            @case('hot')
+                                                <span class="inline-block px-2 py-1 text-xs bg-red-600 text-white rounded-full font-semibold">Hot</span>
+                                                @break
+                                            @case('medium')
+                                                <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded-full font-medium">Medium</span>
+                                                @break
+                                            @case('slow')
+                                                <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full font-medium">Slow</span>
+                                                @break
+                                            @default
+                                                <span class="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full font-medium">None</span>
+                                        @endswitch
+                                    </p>
                                     </div>
                                 </div>
                             </a>
@@ -102,6 +118,7 @@
                                     <th class="px-4 py-2">Location</th>
                                     <th class="px-4 py-2">Moon Phase</th>
                                     <th class="px-4 py-2">Wind Speed</th>
+                                    <th class="px-4 py-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
@@ -123,6 +140,21 @@
                                         <td class="px-4 py-2 text-gray-600 dark:text-gray-300">
                                             {{ is_numeric($trip->wind_speed) ? $trip->wind_speed . ' km/h' : 'N/A' }}
                                         </td>
+                                        <td class="px-4 py-2 text-gray-600 dark:text-gray-300">
+                                        @switch($trip->action)
+                                            @case('hot')
+                                                <span class="bg-red-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold">Hot</span>
+                                                @break
+                                            @case('medium')
+                                                <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-medium">Medium</span>
+                                                @break
+                                            @case('slow')
+                                                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-medium">Slow</span>
+                                                @break
+                                            @default
+                                                <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs font-medium">None</span>
+                                        @endswitch
+                                    </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -148,6 +180,22 @@
                                         <strong>Wind Speed:</strong>
                                         {{ is_numeric($trip->wind_speed) ? $trip->wind_speed . ' km/h' : 'N/A' }}
                                     </p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                    <strong>Action:</strong>
+                                    @switch($trip->action)
+                                        @case('hot')
+                                            <span class="inline-block bg-red-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold">Hot</span>
+                                            @break
+                                        @case('medium')
+                                            <span class="inline-block bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-medium">Medium</span>
+                                            @break
+                                        @case('slow')
+                                            <span class="inline-block bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-medium">Slow</span>
+                                            @break
+                                        @default
+                                            <span class="inline-block bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs font-medium">None</span>
+                                    @endswitch
+                                </p>
                                 </div>
                             </a>
                             @if (!$loop->last)

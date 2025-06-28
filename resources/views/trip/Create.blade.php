@@ -138,6 +138,25 @@
                                 + Add Another Image
                             </button>
                         </div>
+                        <br>
+                        <!-- Add this inside the Trip Details grid after the 'notes' input -->
+                        <div>
+                            <h3
+                                class="text-lg font-semibold text-gray-900 dark:text-white mb-2 border-b border-gray-300 dark:border-gray-600 pb-1">
+                                Fishing Action
+                            </h3>
+                            <select name="action" id="action"
+                                class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option value="none" {{ old('action', 'none') == 'none' ? 'selected' : '' }}>None</option>
+                                <option value="hot" {{ old('action') == 'hot' ? 'selected' : '' }}>Hot</option>
+                                <option value="medium" {{ old('action') == 'medium' ? 'selected' : '' }}>Medium</option>
+                                <option value="slow" {{ old('action') == 'slow' ? 'selected' : '' }}>Slow</option>
+                            </select>
+                            @error('action')
+                                <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <br>
                         <!-- Section: Catches -->
                         <div x-data="{ catches: [{}] }">
                             <h3
@@ -174,7 +193,8 @@
 
                                         <div>
                                             <label class="block text-sm text-gray-700 dark:text-gray-300">Quantity</label>
-                                            <input type="number" min="1" value="1" :name="'catches[' + index + '][quantity]'"
+                                            <input type="number" min="1" value="1"
+                                                :name="'catches[' + index + '][quantity]'"
                                                 class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                                         </div>
 

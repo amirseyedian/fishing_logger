@@ -50,6 +50,7 @@ class TripController extends Controller
             'weather_info.wind_speed' => 'nullable|string|max:255',
             'weather_info.wind_direction' => 'nullable|string|max:255',
             'weather_info.air_temp' => 'nullable|string|max:255',
+            'action' => 'required|in:hot,medium,slow,none',
 
             // Updated for multiple images
             'images' => 'nullable|array',
@@ -65,6 +66,7 @@ class TripController extends Controller
             'catches.*.depth' => 'nullable|string|max:255',
             'catches.*.length' => 'nullable|numeric',
             'catches.*.notes' => 'nullable|string',
+
         ]);
 
         $trip = Trip::create([
@@ -82,6 +84,7 @@ class TripController extends Controller
             'wind_direction' => $request->input('weather_info.wind_direction'),
             'air_temp' => $request->input('air_temp'),
             'water_temperature' => $request->input('weather_info.water_temperature'),
+            'action' => $request->input('action'),
         ]);
 
         if ($request->hasFile('image_path')) {
@@ -98,7 +101,7 @@ class TripController extends Controller
             foreach ($validated['catches'] as $catchData) {
                 Catches::create([
                     'trip_id' => $trip->id,
-                    'species' => $catchData['species'],
+                    'species' => $catchData['species'] ?? null,
                     'weight' => $catchData['weight'] ?? null,
                     'length' => $catchData['length'] ?? null,
                     'quantity' => $catchData['quantity'] ?? null,
@@ -153,6 +156,7 @@ class TripController extends Controller
             'notes' => 'nullable|string',
             'weather_info' => 'nullable|json',
             'air_temp' => 'nullable|numeric',
+            'action' => 'required|in:hot,medium,slow,none',
         ]);
 
         $trip->update($validated);

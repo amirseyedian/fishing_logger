@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->float('wind_speed')->nullable();
             $table->string('wind_direction')->nullable();
             $table->float('air_temp')->nullable();
+            $table->enum('action', ['hot', 'medium', 'slow', 'none'])->default('none');
 
             $table->timestamps();
         });
