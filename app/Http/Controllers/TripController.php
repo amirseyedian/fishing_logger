@@ -105,20 +105,37 @@ class TripController extends Controller
                 ]);
             }
         }
-        if (!empty($validated['images'])) {
-            foreach ($validated['images'] as $imageData) {
-                if (isset($imageData['file']) && $imageData['file'] instanceof \Illuminate\Http\UploadedFile) {
-                    $path = $imageData['file']->store('trip_images', 'public');
+        if ($request->has('uploaded_images') && is_array($request->input('uploaded_images'))) {
+            foreach ($request->input('uploaded_images') as $tempPath) {
+                // Skip if null or not a string
+                if (!$tempPath || !is_string($tempPath)) {
+                    continue;
+                }
+
+                $newPath = str_replace('temp_trip_images/', 'trip_images/', $tempPath);
+
+                if (Storage::disk('public')->exists($tempPath)) {
+                    Storage::disk('public')->move($tempPath, $newPath);
 
                     TripImage::create([
                         'trip_id' => $trip->id,
-                        'image_path' => $path,
-                        'caption' => $imageData['caption'] ?? null,
+                        'image_path' => $newPath,
+                        'caption' => null,
                     ]);
                 }
             }
         }
         return redirect()->route('trips.index')->with('success', 'Trip successfully added!');
+    }
+    public function uploadTempImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120', // 5MB
+        ]);
+
+        $path = $request->file('image')->store('temp_trip_images', 'public');
+
+        return response()->json(['path' => $path, 'url' => Storage::url($path)]);
     }
 
     // Show a specific trip
@@ -162,8 +179,16 @@ class TripController extends Controller
     {
         $trip = auth()->user()->trips()->findOrFail($id);
 
-        // Optionally delete related catches and images
         Catches::where('trip_id', $trip->id)->delete();
+
+        $tripImages = TripImage::where('trip_id', $trip->id)->get();
+
+        foreach ($tripImages as $image) {
+            if ($image->image_path && \Storage::disk('public')->exists($image->image_path)) {
+                \Storage::disk('public')->delete($image->image_path);
+            }
+        }
+
         TripImage::where('trip_id', $trip->id)->delete();
 
         $trip->delete();

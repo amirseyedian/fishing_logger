@@ -108,39 +108,29 @@
                             </div>
                         </div>
                         <!-- Section: Images -->
-                        <div x-data="{ images: [{}] }">
+                        <div>
                             <h3
                                 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 border-b border-gray-300 dark:border-gray-600 pb-1">
                                 Images
                             </h3>
 
-                            <template x-for="(image, index) in images" :key="index">
-                                <div
-                                    class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 p-4 border border-gray-300 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900">
-                                    <div>
-                                        <label :for="'images[' + index + '][file]'"
-                                            class="block text-sm font-medium text-gray-700 dark:text-gray-300">Upload
-                                            Image</label>
-                                        <input type="file" :name="'images[' + index + '][file]'" accept="image/*"
-                                            class="mt-1 w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700" />
-                                    </div>
+                            <!-- AJAX multi-image upload section -->
+                            <div class="mt-6">
+                                <label for="imageUpload"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Upload Images (You Can Select Multiple)
+                                </label>
+                                <input type="file" id="imageUpload" multiple accept="image/*"
+                                    class="block w-full text-sm text-gray-600 dark:text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700" />
 
-                                    <div>
-                                        <label :for="'images[' + index + '][caption]'"
-                                            class="block text-sm font-medium text-gray-700 dark:text-gray-300">Image
-                                            Caption</label>
-                                        <input type="text" :name="'images[' + index + '][caption]'"
-                                            class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500" />
-                                    </div>
-                                </div>
-                            </template>
+                                <!-- Image preview area -->
+                                <div id="imagePreviewContainer" class="flex flex-wrap mt-4 gap-2"></div>
 
-                            <button type="button" @click="images.push({})"
-                                class="mt-2 inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md text-sm">
-                                + Add Another Image
-                            </button>
+                                <div id="uploadedImageInputs"></div>
+                            </div>
                         </div>
                         <br>
+                        <!-- Section: Action -->
                         <div>
                             <h3
                                 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 border-b border-gray-300 dark:border-gray-600 pb-1">
@@ -200,13 +190,15 @@
                                         </div>
 
                                         <div>
-                                            <label class="block text-sm text-gray-700 dark:text-gray-300">Depth (m)</label>
+                                            <label class="block text-sm text-gray-700 dark:text-gray-300">Depth
+                                                (m)</label>
                                             <input type="number" step="0.1" :name="'catches[' + index + '][depth]'"
                                                 class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                                         </div>
 
                                         <div>
-                                            <label class="block text-sm text-gray-700 dark:text-gray-300">Water Temperature
+                                            <label class="block text-sm text-gray-700 dark:text-gray-300">Water
+                                                Temperature
                                                 (°C)</label>
                                             <input type="number" step="0.1" :name="'catches[' + index + '][water_temp]'"
                                                 class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500" />
@@ -245,3 +237,57 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        async function uploadImagesSequentially(files) {
+            const previewContainer = document.getElementById('imagePreviewContainer');
+            const hiddenInputContainer = document.getElementById('uploadedImageInputs');
+
+            for (const file of files) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                try {
+                    const response = await fetch("{{ route('trips.uploadImage') }}", {
+                        method: "POST",
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.path) {
+                        // Append hidden input for form submission
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'uploaded_images[]';
+                        hiddenInput.value = data.path;
+                        hiddenInputContainer.appendChild(hiddenInput);
+
+                        // Show image preview
+                        const img = document.createElement('img');
+                        img.src = data.url;
+                        img.style.maxWidth = '150px';
+                        img.style.margin = '5px';
+                        previewContainer.appendChild(img);
+                    } else {
+                        console.error('Upload error response:', data);
+                        alert("Image upload failed. Please try again.");
+                    }
+                } catch (error) {
+                    console.error('Upload error:', error);
+                    alert("Image upload failed. Please try again.");
+                }
+            }
+        }
+
+        document.getElementById('imageUpload').addEventListener('change', function (e) {
+            const files = Array.from(e.target.files);
+            if (files.length === 0) return;
+
+            uploadImagesSequentially(files);
+        });
+    </script>
+@endpush

@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     // Catches & Images (nested under a trip)
     Route::post('/trips/{trip}/catches', [CatchesController::class, 'store'])->name('catches.store');
     Route::post('/trips/{trip}/images', [TripImageController::class, 'store'])->name('images.store');
+    Route::post('/upload-temp-image', [TripController::class, 'uploadTempImage'])->name('trips.uploadImage');
 
     // Optional RESTful routes: edit, update, destroy
     Route::get('/trips/{trip}/edit', [TripController::class, 'edit'])->name('trips.edit');
