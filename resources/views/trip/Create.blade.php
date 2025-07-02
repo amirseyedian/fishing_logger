@@ -43,9 +43,11 @@
                             <div class="md:col-span-2">
                                 <label for="wind_direction"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-300">Trip Notes</label>
-                                <input type="text" name="notes" id="notes"
-                                    class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="How Was Your Trip?" />
+                                <div class="md:col-span-2">
+                                    <textarea name="notes" id="notes" rows="5"
+                                        class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="How was your trip? Any details you want to remember...">{{ old('notes') }}</textarea>
+                                </div>
                             </div>
                         </div>
                         <!-- Map -->
@@ -139,7 +141,6 @@
                             </button>
                         </div>
                         <br>
-                        <!-- Add this inside the Trip Details grid after the 'notes' input -->
                         <div>
                             <h3
                                 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 border-b border-gray-300 dark:border-gray-600 pb-1">
@@ -173,7 +174,7 @@
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                         <div>
                                             <label class="block text-sm text-gray-700 dark:text-gray-300">Species</label>
-                                            <input type="text" :name="'catches[' + index + '][species]'" required
+                                            <input type="text" :name="'catches[' + index + '][species]'"
                                                 class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                                         </div>
 

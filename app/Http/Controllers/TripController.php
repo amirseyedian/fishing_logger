@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class TripController extends Controller
 {
-    // Show all trips for the authenticated user
-/*     public function index()
-    {
-        $trips = auth()->user()->trips()->latest()->get();
-        return view('trip.trips', compact('trips'));
-    } */
     public function index(Request $request)
     {
         $view = $request->query('view', 'grid');
@@ -24,7 +18,7 @@ class TripController extends Controller
             ->trips()
             ->latest()
             ->paginate(50)
-            ->withQueryString(); // retains the view mode in pagination URLs
+            ->withQueryString();
 
         return view('trip.trips', compact('trips', 'view'));
     }
@@ -58,7 +52,7 @@ class TripController extends Controller
             'images.*.caption' => 'nullable|string|max:255',
 
             'catches' => 'nullable|array',
-            'catches.*.species' => 'required_with:catches|string|max:255',
+            'catches.*.species' => 'nullable|string|max:255',
             'catches.*.weight' => 'nullable|numeric',
             'catches.*.quantity' => 'nullable|numeric',
             'catches.*.water_temp' => 'nullable|numeric',
@@ -77,12 +71,11 @@ class TripController extends Controller
             'longitude' => $validated['longitude'],
             'date' => $validated['date'],
             'notes' => $validated['notes'] ?? null,
-            // Weather fields
             'precipitation' => $request->input('weather_info.precipitation'),
             'moon_phase' => $request->input('weather_info.moon_phase'),
             'wind_speed' => $request->input('weather_info.wind_speed'),
             'wind_direction' => $request->input('weather_info.wind_direction'),
-            'air_temp' => $request->input('air_temp'),
+            'air_temp' => $validated['weather_info']['air_temp'] ?? null,
             'water_temperature' => $request->input('weather_info.water_temperature'),
             'action' => $request->input('action'),
         ]);
