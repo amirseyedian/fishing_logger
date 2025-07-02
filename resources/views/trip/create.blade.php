@@ -239,55 +239,104 @@
 @endsection
 @push('scripts')
     <script>
-        async function uploadImagesSequentially(files) {
-            const previewContainer = document.getElementById('imagePreviewContainer');
-            const hiddenInputContainer = document.getElementById('uploadedImageInputs');
-
-            for (const file of files) {
-                const formData = new FormData();
-                formData.append('image', file);
-
-                try {
-                    const response = await fetch("{{ route('trips.uploadImage') }}", {
-                        method: "POST",
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: formData
-                    });
-
-                    const data = await response.json();
-
-                    if (response.ok && data.path) {
-                        // Append hidden input for form submission
-                        const hiddenInput = document.createElement('input');
-                        hiddenInput.type = 'hidden';
-                        hiddenInput.name = 'uploaded_images[]';
-                        hiddenInput.value = data.path;
-                        hiddenInputContainer.appendChild(hiddenInput);
-
-                        // Show image preview
-                        const img = document.createElement('img');
-                        img.src = data.url;
-                        img.style.maxWidth = '150px';
-                        img.style.margin = '5px';
-                        previewContainer.appendChild(img);
-                    } else {
-                        console.error('Upload error response:', data);
-                        alert("Image upload failed. Please try again.");
-                    }
-                } catch (error) {
-                    console.error('Upload error:', error);
-                    alert("Image upload failed. Please try again.");
-                }
-            }
-        }
-
         document.getElementById('imageUpload').addEventListener('change', function (e) {
             const files = Array.from(e.target.files);
             if (files.length === 0) return;
 
-            uploadImagesSequentially(files);
+            files.forEach(file => uploadImageWithProgress(file));
         });
+
+        function uploadImageWithProgress(file) {
+            const MAX_FILE_SIZE_MB = 5;
+            if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+                alert(`${file.name} exceeds the ${MAX_FILE_SIZE_MB}MB limit.`);
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const xhr = new XMLHttpRequest();
+
+            const container = document.createElement('div');
+            container.style.position = 'relative';
+            container.style.display = 'inline-block';
+            container.style.margin = '5px';
+
+            const img = document.createElement('img');
+            img.style.maxWidth = '120px';
+            img.style.maxHeight = '120px';
+            img.style.objectFit = 'cover';
+            img.style.borderRadius = '6px';
+            img.style.boxShadow = '0 0 5px rgba(0,0,0,0.2)';
+            img.style.display = 'block';
+
+            const progress = document.createElement('progress');
+            progress.value = 0;
+            progress.max = 100;
+            progress.style.width = '100%';
+            progress.style.marginTop = '5px';
+
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '×';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '0px';
+            closeBtn.style.right = '5px';
+            closeBtn.style.background = 'rgba(0,0,0,0.5)';
+            closeBtn.style.color = '#fff';
+            closeBtn.style.border = 'none';
+            closeBtn.style.borderRadius = '50%';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.width = '22px';
+            closeBtn.style.height = '22px';
+            closeBtn.style.lineHeight = '22px';
+            closeBtn.style.padding = '0';
+
+            closeBtn.addEventListener('click', () => {
+                container.remove();
+                if (hiddenInput) hiddenInput.remove();
+            });
+
+            const previewContainer = document.getElementById('imagePreviewContainer');
+            previewContainer.appendChild(container);
+            container.appendChild(img);
+            container.appendChild(progress);
+            container.appendChild(closeBtn);
+
+            let hiddenInput;
+
+            xhr.upload.addEventListener('progress', (e) => {
+                if (e.lengthComputable) {
+                    const percentComplete = Math.round((e.loaded / e.total) * 100);
+                    progress.value = percentComplete;
+                }
+            });
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    progress.remove();
+
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        img.src = response.url;
+
+                        // Create hidden input with image path
+                        hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'uploaded_images[]';
+                        hiddenInput.value = response.path;
+                        document.getElementById('uploadedImageInputs').appendChild(hiddenInput);
+                    } else {
+                        img.src = '';
+                        alert("Upload failed for " + file.name);
+                        container.remove();
+                    }
+                }
+            };
+
+            xhr.open("POST", "{{ route('trips.uploadImage') }}", true);
+            xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+            xhr.send(formData);
+        }
     </script>
-@endpush
+    @endpush                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
