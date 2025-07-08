@@ -257,7 +257,7 @@
             formData.append('image', file);
 
             const xhr = new XMLHttpRequest();
-            xhr.timeout = 3000;
+            xhr.timeout = 30000;
 
             const container = document.createElement('div');
             container.style.position = 'relative';
@@ -345,4 +345,4 @@
             xhr.send(formData);
         }
     </script>
-    @endpush                                                                           
+    @endpush                                                                                                          

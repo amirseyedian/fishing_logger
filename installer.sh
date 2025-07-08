@@ -6,8 +6,8 @@ WEB_USER="www-data"
 cd "$APP_DIR" || { echo "App directory not found!"; exit 1; }
 
 
-php artisan migrate:fresh --force
-php artisan db:seed --force
+php artisan migrate:fresh
+php artisan db:seed
 php artisan key:generate
 php artisan storage:link
 
