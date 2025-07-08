@@ -15,7 +15,11 @@
 @section('content')
     <div class="py-12 space-y-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
+            <!-- Map of Trips -->
+            <div class="mb-10">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Recent Trips Map</h3>
+                <div id="trip-map" class="w-full rounded shadow-md" style="min-height: 300px; height: 400px;"></div>
+            </div>
             <!-- Quick Stats + Weather -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                 <!-- Total Trips -->
@@ -88,3 +92,35 @@
     </div>
 
 @endsection
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-oH+m3Wckn1Z1JsE+yaZ+cPjybY5mAvjgpz9EcHI5PZ0=" crossorigin="" />
+@endpush
+
+@push('scripts')
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-o0/0V3uKw16lqemjo8bBNVnFdA1fN19OYJLtW1D1V5o=" crossorigin=""></script>
+    <script>
+        const trips = @json($tripMarkers);
+        const map = L.map('trip-map').setView([0, 0], 2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const markers = [];
+
+        trips.forEach(trip => {
+            if (trip.latitude && trip.longitude) {
+                const marker = L.marker([trip.latitude, trip.longitude])
+                    .addTo(map)
+                    .bindPopup(`<strong>${trip.title}</strong>`);
+                markers.push(marker.getLatLng());
+            }
+        });
+
+        if (markers.length) {
+            map.fitBounds(markers);
+        }
+    </script>
+@endpush

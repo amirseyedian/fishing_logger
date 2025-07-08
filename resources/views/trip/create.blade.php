@@ -93,7 +93,7 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Air
                                         Temperature
                                         (°C)</label>
-                                    <input type="number" step="0.1" name="air_temp" id="air_temp"
+                                    <input type="number" step="0.1" name="weather_info[air_temp]" id="air_temp"
                                         class="mt-1 w-full rounded-lg border-gray-300 dark:bg-gray-700 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                                 </div>
 
@@ -339,4 +339,4 @@
             xhr.send(formData);
         }
     </script>
-    @endpush                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+@endpush

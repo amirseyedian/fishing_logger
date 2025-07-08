@@ -45,6 +45,21 @@ class DashboardController extends Controller
             ];
         }
 
+        // Collect only lat/lng + title for map markers
+        $tripMarkers = $trips
+            ->filter(fn($trip) => $trip->latitude && $trip->longitude)
+            ->take(5)
+            ->map(function ($trip) {
+                return [
+                    'id' => $trip->id,
+                    'title' => $trip->title,
+                    'latitude' => $trip->latitude,
+                    'longitude' => $trip->longitude,
+                ];
+            })
+            ->values(); // reindex to avoid gaps in the JSON
+
+
         return view('dashboard', [
             'totalTrips' => $totalTrips,
             'totalCatches' => $totalCatches,
@@ -52,6 +67,7 @@ class DashboardController extends Controller
             'recentTrips' => $trips->take(3),
             'highlightCatches' => Catches::whereIn('trip_id', $trips->pluck('id'))->latest()->take(6)->get(),
             'weatherForecast' => $weatherForecast,
+            'tripMarkers' => $tripMarkers,
         ]);
     }
 }

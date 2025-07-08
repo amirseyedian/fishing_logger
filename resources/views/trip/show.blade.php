@@ -16,9 +16,6 @@
                 <div class="mt-2 text-sm text-center text-gray-600 dark:text-gray-300">
                     <template x-for="image in {{ $trip->images->pluck('image_path') }}">
                         <template x-if="selectedImage === '{{ asset('storage/') }}/' + image">
-                            <p>
-                                {{ $trip->images->where('image_path', '=', 'REPLACE_ME')->first()?->caption }}
-                            </p>
                         </template>
                     </template>
                 </div>

@@ -160,20 +160,109 @@ class TripController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'location' => 'required|string|max:255',
-            'latitude' => 'nullable|numeric',
-            'longitude' => 'nullable|numeric',
             'date' => 'required|date',
             'notes' => 'nullable|string',
-            'weather_info' => 'nullable|json',
-            'air_temp' => 'nullable|numeric',
-            'action' => 'required|in:hot,medium,slow,none',
+            'weather_info.precipitation' => 'nullable|numeric',
+            'weather_info.air_temp' => 'nullable|numeric',
+            'weather_info.wind_speed' => 'nullable|numeric',
+            'weather_info.wind_direction' => 'nullable|string|max:255',
+            'weather_info.moon_phase' => 'nullable|string|max:255',
+
+            'existing_images' => 'nullable|array',
+            'existing_images.*' => 'integer|exists:trip_images,id',
+            'new_images.*' => 'file|image|max:5120',
+
+            // New catches validation
+            'catches' => 'nullable|array',
+            'catches.*.id' => 'nullable|integer|exists:catches,id',
+            'catches.*.species' => 'nullable|string|max:255',
+            'catches.*.length' => 'nullable|numeric',
+            'catches.*.weight' => 'nullable|numeric',
+            'catches.*.quantity' => 'nullable|integer|min:1',
+            'catches.*.depth' => 'nullable|numeric',
+            'catches.*.water_temp' => 'nullable|numeric',
+            'catches.*.bait' => 'nullable|string|max:255',
+            'catches.*.notes' => 'nullable|string',
         ]);
 
-        $trip->update($validated);
+        // Update basic trip info
+        $trip->title = $validated['title'];
+        $trip->location = $validated['location'];
+        $trip->date = $validated['date'];
+        $trip->notes = $validated['notes'] ?? null;
+
+        $trip->precipitation = $request->input('weather_info.precipitation');
+        $trip->air_temp = $request->input('weather_info.air_temp');
+        $trip->wind_speed = $request->input('weather_info.wind_speed');
+        $trip->wind_direction = $request->input('weather_info.wind_direction');
+        $trip->moon_phase = $request->input('weather_info.moon_phase');
+
+        $trip->save();
+
+        // Handle images as before
+        $existingImages = $request->input('existing_images', []);
+        $imagesToDelete = $trip->images()->whereNotIn('id', $existingImages)->get();
+        foreach ($imagesToDelete as $image) {
+            Storage::disk('public')->delete($image->image_path);
+            $image->delete();
+        }
+        if ($request->hasFile('new_images')) {
+            foreach ($request->file('new_images') as $file) {
+                $path = $file->store('trip_images', 'public');
+                $trip->images()->create(['image_path' => $path]);
+            }
+        }
+
+        // Handle catches updates
+        $submittedCatches = $request->input('catches', []);
+
+        // Get current catch IDs for this trip
+        $existingCatchIds = $trip->catches()->pluck('id')->toArray();
+
+        $submittedCatchIds = collect($submittedCatches)->pluck('id')->filter()->all();
+
+        // Delete catches removed by the user
+        $catchesToDelete = array_diff($existingCatchIds, $submittedCatchIds);
+        if (!empty($catchesToDelete)) {
+            $trip->catches()->whereIn('id', $catchesToDelete)->delete();
+        }
+
+        // Loop through submitted catches to update or create
+        foreach ($submittedCatches as $catchData) {
+            // If catch has id, update
+            if (!empty($catchData['id'])) {
+                $catch = $trip->catches()->find($catchData['id']);
+                if ($catch) {
+                    $catch->update([
+                        'species' => $catchData['species'] ?? null,
+                        'length' => $catchData['length'] ?? null,
+                        'weight' => $catchData['weight'] ?? null,
+                        'quantity' => $catchData['quantity'] ?? 1,
+                        'depth' => $catchData['depth'] ?? null,
+                        'water_temp' => $catchData['water_temp'] ?? null,
+                        'bait' => $catchData['bait'] ?? null,
+                        'notes' => $catchData['notes'] ?? null,
+                    ]);
+                }
+            } else {
+                // Create new catch only if some data exists (e.g. species)
+                if (!empty($catchData['species'])) {
+                    $trip->catches()->create([
+                        'species' => $catchData['species'],
+                        'length' => $catchData['length'] ?? null,
+                        'weight' => $catchData['weight'] ?? null,
+                        'quantity' => $catchData['quantity'] ?? 1,
+                        'depth' => $catchData['depth'] ?? null,
+                        'water_temp' => $catchData['water_temp'] ?? null,
+                        'bait' => $catchData['bait'] ?? null,
+                        'notes' => $catchData['notes'] ?? null,
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('trips.index')->with('success', 'Trip updated successfully.');
     }
-
     // Delete a specific trip
     public function destroy($id)
     {
