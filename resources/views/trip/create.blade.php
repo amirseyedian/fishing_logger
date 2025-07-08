@@ -247,7 +247,7 @@
         });
 
         function uploadImageWithProgress(file) {
-            const MAX_FILE_SIZE_MB = 5;
+            const MAX_FILE_SIZE_MB = 15;
             if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
                 alert(`${file.name} exceeds the ${MAX_FILE_SIZE_MB}MB limit.`);
                 return;
@@ -257,7 +257,7 @@
             formData.append('image', file);
 
             const xhr = new XMLHttpRequest();
-            xhr.timeout = 30000;
+            xhr.timeout = 3000;
 
             const container = document.createElement('div');
             container.style.position = 'relative';
@@ -345,4 +345,4 @@
             xhr.send(formData);
         }
     </script>
-@endpush
+    @endpush                                                                           
