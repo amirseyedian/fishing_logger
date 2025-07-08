@@ -257,6 +257,7 @@
             formData.append('image', file);
 
             const xhr = new XMLHttpRequest();
+            xhr.timeout = 30000;
 
             const container = document.createElement('div');
             container.style.position = 'relative';
@@ -332,6 +333,11 @@
                         container.remove();
                     }
                 }
+            };
+
+            xhr.ontimeout = function () {
+                alert("Upload timed out for " + file.name);
+                container.remove();
             };
 
             xhr.open("POST", "{{ route('trips.uploadImage') }}", true);
