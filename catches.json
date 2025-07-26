@@ -17,7 +17,7 @@
     "length": 30,
     "bait": "Squid Jag - Orange",
     "quantity": 2,
-    "depth": "meters",
+    "depth": null,
     "water_temp": 0,
     "notes": null
   },
@@ -28,7 +28,7 @@
     "length": 50,
     "bait": "Yozuri bibbed - white/red",
     "quantity": 1,
-    "depth": "meters",
+    "depth": null,
     "water_temp": 0,
     "notes": null
   },
@@ -39,7 +39,7 @@
     "length": 30,
     "bait": "Squid",
     "quantity": 1,
-    "depth": "meters",
+    "depth": null,
     "water_temp": 0,
     "notes": null
   },
@@ -50,7 +50,7 @@
     "length": 20,
     "bait": "Squid",
     "quantity": 1,
-    "depth": "meters",
+    "depth": null,
     "water_temp": 0,
     "notes": null
   },
@@ -61,7 +61,7 @@
     "length": 35,
     "bait": "Yozuri bibbed - white/red",
     "quantity": 1,
-    "depth": "meters",
+    "depth": null,
     "water_temp": 0,
     "notes": null
   },
@@ -94,7 +94,7 @@
     "length": 0,
     "bait": "beach worms",
     "quantity": 6,
-    "depth": "meters",
+    "depth": null,
     "water_temp": 20,
     "notes": null
   },
@@ -105,7 +105,7 @@
     "length": 0,
     "bait": "beach worms",
     "quantity": 9,
-    "depth": "meters",
+    "depth": null,
     "water_temp": 20,
     "notes": null
   },
@@ -116,7 +116,7 @@
     "length": 12,
     "bait": "Worms",
     "quantity": 36,
-    "depth": "meters",
+    "depth": null,
     "water_temp": null,
     "notes": null
   },
@@ -127,7 +127,7 @@
     "length": 0,
     "bait": "Cat Food",
     "quantity": 4,
-    "depth": "meters",
+    "depth": null,
     "water_temp": null,
     "notes": null
   },
@@ -149,7 +149,7 @@
     "length": 45,
     "bait": "Pink Lemonade 4",
     "quantity": 1,
-    "depth": "meters",
+    "depth": null,
     "water_temp": null,
     "notes": null
   },
