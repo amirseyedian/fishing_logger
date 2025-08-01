@@ -41,6 +41,14 @@
                         </a>
                     </div>
                 @else
+                {{-- Sort Dropdown --}}
+                    <div class="mb-4 flex justify-end">
+                        <label for="sort" class="mr-2 text-sm text-gray-700 dark:text-gray-300 self-center">Sort by:</label>
+                        <select id="sort" @change="updateSort($event)" class="border rounded px-2 py-1 text-sm dark:bg-gray-800 dark:text-white">
+                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest First</option>
+                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest First</option>
+                        </select>
+                    </div>
                     {{-- View Toggle Buttons --}}
                     <div class="mb-4 flex justify-end">
                         <button @click="setView('grid')" :class="{ 'bg-blue-600 text-white': view === 'grid' }"
@@ -204,9 +212,20 @@
                         @endforeach
                     </div>
                     <div class="mt-6">
-                        {{ $trips->onEachSide(1)->links('pagination::tailwind') }}
+                    {{ $trips->appends(request()->query())->links('pagination::tailwind') }}
                     </div>
                 @endif
             </div>
         </div>
 @endsection
+@push('script')
+<script>
+updateSort(event) {
+    const sort = event.target.value;
+    const url = new URL(window.location);
+    url.searchParams.set('sort', sort);
+    url.searchParams.delete('page'); // Reset pagination
+    window.location = url.toString();
+}
+</script>
+@endpush

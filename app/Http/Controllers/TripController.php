@@ -13,17 +13,24 @@ class TripController extends Controller
     public function index(Request $request)
     {
         $view = $request->query('view', 'grid');
+        $sortOrder = $request->query('sort', 'newest'); // Default to 'newest'
 
         $trips = auth()->user()
             ->trips()
-            ->latest()
+            ->when($sortOrder === 'oldest', function ($query) {
+                $query->orderBy('date', 'asc');
+            })
+            ->when($sortOrder === 'newest', function ($query) {
+                $query->orderBy('date', 'desc');
+            })
             ->paginate(50)
-            ->withQueryString();
+            ->appends([
+                'view' => $view,
+                'sort' => $sortOrder,
+            ]);
 
         return view('trip.trips', compact('trips', 'view'));
     }
-
-    // Show form to create a new trip
     public function create()
     {
         return view('trip.create');
