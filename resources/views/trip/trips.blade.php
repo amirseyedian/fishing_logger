@@ -137,7 +137,7 @@
                                             {{ $trip->title }}
                                         </td>
                                         <td class="px-4 py-2 text-gray-600 dark:text-gray-300">
-                                            {{ \Carbon\Carbon::parse($trip->date)->format('Y-m-d') }}
+                                        {{ \Carbon\Carbon::parse($trip->date)->format('d F Y') }}
                                         </td>
                                         <td class="px-4 py-2 text-gray-600 dark:text-gray-300">
                                             {{ $trip->location }}
@@ -178,7 +178,7 @@
                                         {{ $trip->title }}
                                     </h3>
                                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                                        <strong>Date:</strong> {{ \Carbon\Carbon::parse($trip->date)->format('F j, Y') }}
+                                        <strong>Date:</strong> {{ \Carbon\Carbon::parse($trip->date)->format('d F Y') }}
                                         &nbsp;&nbsp;
                                         <strong>Location:</strong> {{ $trip->location }}
                                     </p>
